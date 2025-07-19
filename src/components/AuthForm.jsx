@@ -126,8 +126,8 @@ const AuthForm = ({ isLogin, onToggleMode, onLogin }) => {
             </h1>
             <p className="text-gray-600">
               {isLogin
-                ? "Sign in to your Docket account"
-                : "Join Docket to organize your notes"}
+                ? "Sign in to your Notes account"
+                : "Join Notes to organize your notes"}
             </p>
           </div>
 
