@@ -56,7 +56,7 @@ export default function Dashboard() {
       if (response.ok) {
         const json = await response.json();
         setNotes(json);
-        showToast("Notes fetched successfully", "success");
+        // showToast("Notes fetched successfully", "success");
       } else {
         console.error("Failed to fetch notes");
         showToast("Failed to fetch notes", "error");
