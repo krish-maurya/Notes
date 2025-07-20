@@ -16,6 +16,7 @@ import AuthForm from "./AuthForm";
 import ProfilePage from "./ProfilePage";
 import NoteCreationModal from "./NoteCreationModal";
 import NotePreview from "./NotePreview";
+import Toast from "./Toast";
 
 export default function Dashboard() {
   const host = "http://localhost:3000/";
@@ -30,6 +31,11 @@ export default function Dashboard() {
   const [filterTag, setFilterTag] = useState("");
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+  };
 
   const getNotes = async () => {
     try {
@@ -50,8 +56,10 @@ export default function Dashboard() {
       if (response.ok) {
         const json = await response.json();
         setNotes(json);
+        showToast("Notes fetched successfully", "success");
       } else {
         console.error("Failed to fetch notes");
+        showToast("Failed to fetch notes", "error");
         setCurrentUser(null);
       }
     } catch (error) {
@@ -119,9 +127,12 @@ export default function Dashboard() {
             prevNotes.map((note) =>
               note._id === editingNote._id ? actualNote : note
             )
+            
           );
+          showToast("Note updated successfully", "success");
         } else {
           console.error("Failed to update note");
+          showToast("Failed to update note", "error");
         }
       } catch (err) {
         console.error("Failed to update note:", err);
@@ -142,8 +153,10 @@ export default function Dashboard() {
           const newNote = await response.json();
           const actualNote = newNote.savedNote || newNote;
           setNotes((prev) => [actualNote, ...prev]);
+          showToast("Note created successfully", "success");
         } else {
           console.error("Failed to create note");
+          showToast("Failed to create note", "error");
         }
       } catch (err) {
         console.error("Failed to create note:", err);
@@ -175,8 +188,10 @@ export default function Dashboard() {
         if (response.ok) {
           setNotes((prev) => prev.filter((note) => note._id !== noteId));
           setSelectedNote(null);
+          showToast("Note deleted successfully", "success");
         } else {
           console.error("Failed to delete note");
+          showToast("Failed to delete note", "error");
         }
       } catch (error) {
         console.error("Error deleting note:", error);
@@ -640,6 +655,13 @@ export default function Dashboard() {
           onEdit={handleEditNote}
           onDelete={handleDeleteNote}
           onToggleFavorite={toggleFavorite}
+        />
+      )}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
         />
       )}
     </div>
