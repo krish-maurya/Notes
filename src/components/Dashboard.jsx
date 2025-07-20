@@ -19,7 +19,7 @@ import NotePreview from "./NotePreview";
 import Toast from "./Toast";
 
 export default function Dashboard() {
-  const host = "http://localhost:3000/";
+  const host = "https://notes-j32l.onrender.com/";
   const [currentUser, setCurrentUser] = useState(null);
   const [isLogin, setIsLogin] = useState(true);
   const [currentView, setCurrentView] = useState("notes"); // 'notes', 'profile'

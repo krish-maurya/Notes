@@ -64,7 +64,7 @@ const AuthForm = ({ isLogin, onToggleMode, onLogin }) => {
     if (!validateForm()) return;
     if (isLogin) {
       setIsLoading(true);
-      const response = await fetch("http://localhost:3000/user/login", {
+      const response = await fetch("https://notes-j32l.onrender.com/user/login", {
         method: "POST",
         headers: {
           "content-Type": "application/json",
@@ -79,7 +79,7 @@ const AuthForm = ({ isLogin, onToggleMode, onLogin }) => {
       setIsLoading(false);
     } else {
       setIsLoading(true);
-      const response = await fetch("http://localhost:3000/user/register", {
+      const response = await fetch("https://notes-j32l.onrender.com/user/register", {
         method: "POST",
         headers: {
           "content-Type": "application/json",
@@ -100,7 +100,7 @@ const AuthForm = ({ isLogin, onToggleMode, onLogin }) => {
       localStorage.setItem("token", json.token);
 
       // fetch profile using token
-      const profileRes = await fetch("http://localhost:3000/user/profile", {
+      const profileRes = await fetch("https://notes-j32l.onrender.com/user/profile", {
         headers: {
           Authorization: `Bearer ${json.token}`,
         },

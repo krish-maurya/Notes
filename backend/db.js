@@ -6,6 +6,7 @@ mongoose.connect(mongoURL);
 mongoose.connection.on("connected", () => {
   console.log("Connected to MongoDB");
 });
+
 const db = mongoose.connection;
 db.on("connected", () => {
   console.log("Database is connected");

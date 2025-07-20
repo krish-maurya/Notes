@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Ignore all node_modules folders anywhere in the project
+**/node_modules/
+
+# Optional: also ignore env files
+.env
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
