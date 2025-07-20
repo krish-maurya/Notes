@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const User = require("../module/User");
 const { generateToken, jwtAuthMiddlware } = require("../jwt");
-// const { body, validationResult } = require("express-validator");
-// const jwt = require("jsonwebtoken");
 const success = false;
 
 router.post("/register", async (req, res) => {
