@@ -6,7 +6,7 @@ A full-stack **Notes App** built with the **MERN stack** (MongoDB, Express, Reac
 
 ### 🔗 Live Demo
 
-* [Notes App](https://krish-maurya.github.io/Notes)
+* [Notes App](https://notes-frontend-q9i9.onrender.com/)
 
 ---
 
